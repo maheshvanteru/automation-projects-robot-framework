@@ -51,13 +51,13 @@ Here, I have developed sample test cases for a sample web site [Demoblaze](https
 
 This project is developed to demonstrate Web UI automation using Robot Framework and Selenium Library.
 
-Here, there are 3 variables `${SMALL_RETRY_SCALE}`, `${MEDIUM_RETRY_SCALE}` and `${LARGE_RETRY_SCALE}` for retrying the keywords when they are failing. Each variable has assigned with the number of retries. Automation engineers are advised to use `${SMALL_RETRY_SCALE}` as the default number of retries for the keywords. If there are big delays in some scenarios, you can use other variables `${MEDIUM_RETRY_SCALE}` and `${LARGE_RETRY_SCALE}`. You can find the examples for this in `object-repository/page-objects` directory.
+Here, there are 3 variables `${SMALL_RETRY_COUNT}`, `${MEDIUM_RETRY_COUNT}` and `${LARGE_RETRY_COUNT}` for retrying the keywords when they are failing. Each variable has assigned with the number of retries. Automation engineers are advised to use `${SMALL_RETRY_COUNT}` as the default number of retries for the keywords. If there are big delays in some scenarios, you can use other variables `${MEDIUM_RETRY_COUNT}` and `${LARGE_RETRY_COUNT}`. You can find the examples for this in `object-repository/page-objects` directory.
 
 Test cases are in `test-cases` directory and covers login functionality.
 
 ## File organization
 ```
-|- robot-framework-page-object-model-demo/                        // Home folder for robot selenium UI automation project
+|- ui-automation/                                                 // Home folder for robot selenium UI automation project
   |- configs/ApplicationVariables.robot                           // Application common variables file
   |- configs/BrowserDetails.robot                                 // Test execution browser configurations
   |- configs/EnvDetails.robot                                     // Test execution environment configurations
