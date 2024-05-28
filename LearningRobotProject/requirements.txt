@@ -1,0 +1,7 @@
+requests
+robotframework
+robotframework-seleniumlibrary
+robotframework-requests
+robotframework-sshlibrary
+webdrivermanager
+paramiko
