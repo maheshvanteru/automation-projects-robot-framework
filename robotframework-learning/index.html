@@ -1,0 +1,944 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Robot Framework training</title>
+
+    <meta name="description" content="Robot Framework training">
+    <meta name="author" content="Julien Brunet">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+
+    <link rel="stylesheet" href="reveal.js-3.1.0/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js-3.1.0/css/theme/white.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="reveal.js-3.1.0/lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js-3.1.0/css/print/pdf.css' : 'reveal.js-3.1.0/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body style="
+    background: #1c1e20;
+    background: -moz-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #555a5f), color-stop(100%, #1c1e20));
+    background: -webkit-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
+    background: -o-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
+    background: -ms-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
+    background: radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
+    background-color: #2b2b2b;
+">
+
+<div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <section data-transition="linear" data-background="#FBFBFB" data-background-transition="slide">
+            <h1>Robot Framework</h1>
+            <h3>Test Automation Training</h3>
+            <img src="img/robots.jpg" width="580" style="border:none;box-shadow:none;float:right;" />
+            <p  style="position:absolute;bottom:0px;float:left;text-align:right;padding-bottom:50px">
+                <small>
+                    By Mahesh Vanteru<br />
+                    <br />
+                    Available on GitHub at<br/>
+                    <a href="http://maheshvanteru.github.io/robot-training">http://maheshvanteru.github.io/robot-training</a>
+                </small>
+            </p>
+        </section>
+
+        <section data-transition="linear" data-background-transition="slide">
+            <h2 style="margin-top:-40px;color:white;">
+                Agenda
+            </h2>
+            <p style="margin-top:0;padding:0;">
+
+                <ul style="list-style-type: none;margin:0;padding:0;width:80%">
+                    <li style="margin:10px 0 0 0;padding:0;">
+                        <div style="float:left;
+                                    width:120px;
+                                    height:120px;
+                                    border-radius:60px;
+                                    background:url(img/press-start.jpg) no-repeat center;
+                                    background-size:132%;
+                                    margin:0;
+                                    border:4px solid #FFF;
+                                    box-shadow: 10px 10px 25px -10px rgba(0,0,0,1);">
+                            &nbsp;
+                        </div>
+                        <ul style="
+                            list-style-type: none;
+                            margin:2px 0 0 70px;
+                            padding:0;height:127px;
+                            background-color:white;
+                            line-height:63px;
+                            padding-left:3em;
+                            box-shadow: 10px 10px 25px -10px rgba(0,0,0,1);">
+                            <li>Introduction</li>
+                            <li>Robot Framework concepts</li>
+                        </ul>
+                    </li>
+
+                    <li style="margin:50px 0 0 0;padding:0;">
+                        <div style="float:left;
+                                    width:120px;
+                                    height:120px;
+                                    border-radius:60px;
+                                    background:url(img/code.jpg) no-repeat center;
+                                    background-size:cover;
+                                    background-size:180%;
+                                    margin:0;
+                                    border:4px solid #FFF;
+                                    box-shadow: 10px 10px 25px -10px rgba(0,0,0,1);">
+                            &nbsp;
+                        </div>
+                        <ul style="
+                            list-style-type: none;
+                            margin:2px 0 0 70px;
+                            padding:0;height:127px;
+                            background-color:white;
+                            line-height:63px;
+                            padding-left:3em;
+                            box-shadow: 10px 10px 25px -10px rgba(0,0,0,1);">
+                            <li>Development basics</li>
+                            <li>Robot Framework editor : RIDE</li>
+                        </ul>
+                    </li>
+
+                    <li style="margin:50px 0 0 0;padding:0;">
+                        <div style="float:left;
+                                    width:120px;
+                                    height:120px;
+                                    border-radius:60px;
+                                    background:url(img/plugin-icon.png) no-repeat center;
+                                    background-size:cover;
+                                    background-size:110%;
+                                    margin:0;
+                                    border:4px solid #FFF;
+                                    box-shadow: 10px 10px 25px -10px rgba(0,0,0,1);">
+                            &nbsp;
+                        </div>
+                        <ul style="
+                            list-style-type: none;
+                            margin:2px 0 0 70px;
+                            padding:0;height:127px;
+                            background-color:white;
+                            line-height:127px;
+                            padding-left:3em;
+                            box-shadow: 10px 10px 25px -10px rgba(0,0,0,1);">
+                            <li>Libraries : Database, Selenium...</li>
+                        </ul>
+                    </li>
+
+                    <li style="margin:50px 0 0 0;padding:0;">
+                        <div style="float:left;
+                                    width:120px;
+                                    height:120px;
+                                    border-radius:60px;
+                                    background:url(img/extending.png) no-repeat center;
+                                    background-size:cover;
+                                    background-size:120%;
+                                    margin:0;
+                                    border:4px solid #FFF;
+                                    box-shadow: 10px 10px 25px -10px rgba(0,0,0,1);">
+                            &nbsp;
+                        </div>
+                        <ul style="
+                            list-style-type: none;
+                            margin:2px 0 0 70px;
+                            padding:0;height:127px;
+                            background-color:white;
+                            line-height:127px;
+                            padding-left:3em;
+                            box-shadow: 10px 10px 25px -10px rgba(0,0,0,1);">
+                            <li>Extending Robot Framework</li>
+                        </ul>
+                    </li>
+                </ul>
+            </p>
+
+            <aside class="notes">
+                Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the
+                speaker notes window (hit 's' on your keyboard).
+            </aside>
+        </section>
+
+        <section data-transition="linear" data-background="#F2E9CE" data-background-transition="slide">
+            <section>
+                <h2>Introduction</h2>
+            </section>
+            <section>
+
+                <h3>Technologies</h3>
+                <p>RobotFramework is a test automation framework designed for Acceptance Testing (ATDD)</p>
+                <p>
+                    <ul>
+                        <li>Core is written in Python</li>
+                        <li>Fully compatible with Java (through Jython)</li>
+                    </ul>
+                </p>
+                <p style="width:600px;">
+                    <div style="float:left;
+                                width:140px;
+                                height:140px;
+                                border-radius:70px;
+                                background:url(img/Java.png) no-repeat center white;
+                                background-size:45%;
+                                margin:0 0 0 300px;
+                                box-shadow: 10px 10px 25px -10px rgba(0,0,0,1);">
+                    </div>
+                    <div style="width:140px;
+                                height:140px;
+                                border-radius:70px;
+                                background:url(img/python.png) no-repeat center white;
+                                background-size:140%;
+                                margin:0 570px;
+                                box-shadow: 10px 10px 25px -10px rgba(0,0,0,1);">
+                    </div>
+                </p>
+
+            </section>
+            <section>
+                <h3>History</h3>
+                <div style="float:left;">
+                    <img src="img/evolution.jpg" width="350"
+                         style="float:left;border-color:white;"
+                    />
+                </div>
+                <div style="margin:30px 0 0 370px">
+                    <ul>
+                        <li>Initiated in 2005 by Nokia Siemens Network</li>
+                        <li>Open Sourced in 2008 (release 2)</li>
+                        <li>Big community on the <a href="https://github.com/robotframework">GitHub</a> project</li>
+                        <li>Last version <a href="https://pypi.python.org/pypi/robotframework#downloads">7.0</a> (May 2024)</li>
+                        <li>Latest Event: <a href="https://github.com/robotframework/robotframework/releases">RoboCon 2024</a> (May 2024)</li>
+                    </ul>
+                    <p>
+                        <a href="http://www.robotframework.org">http://www.robotframework.org</a>
+                    </p>
+                </div>
+            </section>
+        </section>
+
+        <section data-transition="linear" data-background="#BA5158" data-background-transition="slide">
+            <section>
+                <h2>RobotFramework concepts</h2>
+                <h3>Acceptance Testing / Keyword Driven</h3>
+            </section>
+            <section>
+                <h3>Acceptance testing</h3>
+                <p>
+                    <img src="img/atdd-team.png" width="530" style="background:none;border:none;box-shadow:none;"/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <img src="img/atdd-workflow.png" width="380" style="background:none;border:none;box-shadow:none;"/>
+                </p>
+            </section>
+
+            <section>
+                <h3>Keyword Driven</h3>
+                <img src="img/kw-driven-flow.png" width="800" style="background:none;border:none;box-shadow:none;"/>
+            </section>
+
+            <section>
+                <h3>Keyword Driven</h3>
+                <p>Example : test the creation of an order on a web application</p>
+                <img class="fragment" src="img/kw-example-1.png" width="250" style="background:none;border:none;box-shadow:none;margin:255px -10px;padding:0;"/>
+                <img class="fragment" src="img/kw-example-2.png" width="330" style="background:none;border:none;box-shadow:none;margin:0;padding:0;"/>
+                <img class="fragment" src="img/kw-example-3.png" width="330" style="background:none;border:none;box-shadow:none;margin:115px -15px;padding:0;"/>
+                </p>
+                <p>Example : test the creation of an POST API on APILibrary, Percona and Redis</p>
+                <img class="fragment" src="img/perconaAndRedis-1.png" width="250" style="background:none;border:none;box-shadow:none;margin:255px -10px;padding:0;"/>
+                </p>
+            </section>
+        </section>
+
+        <section data-transition="linear" data-background="#E1EBF5" data-background-transition="slide">
+            <section>
+                <h2>Robot Framework development basics</h2>
+            </section>
+            <section>
+                <h3>Install RobotFramework package</h3>
+                <p>
+                    Download the standalone Robotframerwork package from <a href="https://github.com/julienbrunet/robot-standalone-kit">Github</a> and unzip it on your computer :<br />
+                    <a href="https://github.com/julienbrunet/robot-standalone-kit/archive/master.zip">
+                        <img src ="img/download.png" width="100" style="border:none;">
+                    </a>
+                </p>
+                <p style="color:red;">The only prerequisite to run this RobotFramework package is java 1.6 min.</p>
+
+            </section>
+            <section>
+                <h3>Content of the RobotFramework package</h3>
+                <p>
+                    This package contains the following folder tree :
+                    <table style="width:100%;font-size:0.6em;">
+                        <tr>
+                            <td>robotframework-core</td>
+                            <td></td>
+                            <td>All necessary binaries to run RobotFramework tests</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>documentation</td>
+                            <td>Documentation on existing libraries and keywords</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>lib</td>
+                            <td>External robotFramework library binaries</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>standalone-browsers</td>
+                            <td>Binaries for standalone browsers</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>web-drivers</td>
+                            <td>Web drivers executable</td>
+                        </tr>
+                        <tr>
+                            <td>tests</td>
+                            <td></td>
+                            <td>Where we write all the tests</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>scripts</td>
+                            <td>The entry point of tests</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>keywords</td>
+                            <td>The keyword file definition</td>
+                        </tr>
+                    </table>
+                </p>
+            </section>
+            <section>
+                <h3>A first script</h3>
+                <p>Write the following code in a text file named <code>myFirstTest.robot</code> under "scripts" folder</p>
+                <pre style="box-shadow:none;">
+                    <code contenteditable style="box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);">
+*** Test Cases ***
+My First Test
+    ${current_year}=    Get Time    year
+    Should Start With    ${current_year}    20
+                    </code>
+                </pre>
+                <p>
+                    <div style="float:left;width:50%;" class="fragment" >
+                        Then launch the test by running <code>robot.bat</code> file. You should get a success in the report.html file :<br>
+                    </div>
+                    <div style="float:right;width:45%;" class="fragment" >
+                        <img src="img/report-myFirstTest.png" width="100%;" style="background:none;border:none;box-shadow:none;margin:0;padding:0;"/>
+                    </div>
+                </p>
+            </section>
+
+            <section data-transition="none" data-background-transition="none">
+                <h3>Test script architecture</h3>
+                <div style="margin:0;padding:0;float:left;width:52%;">
+                    <pre style="box-shadow:none;margin:0;">
+                        <code  style="margin:0 -55px 0 0;max-height:600px;box-shadow:0px 0px 6px rgba(0, 0, 0, 0.3);">
+*** Settings ***
+Library    OperatingSystem
+
+*** Variables ***
+${PATH_TO_CHECK}    c:\\temp
+
+*** Test Cases ***
+Check Host Configuration
+    [Documentation]    Check config...
+    # Check existence of c:\temp folder
+    Should Exists    ${PATH_TO_CHECK}
+    Check Host Date Is    2015
+
+*** Keywords ***
+Check Host Date Is
+    [Documentation]    Check date...
+    [Arguments]    ${YEAR}
+    ${host_year}=    Get Time    year
+    Should Be Equal    ${host_year}    ${YEAR}
+                        </code>
+                    </pre>
+                </div>
+                <div style="margin:0;padding:0;float:right;width:40%;">
+                    <p>Create a new test case with this Robot Framework code</p>
+                </div>
+            </section>
+
+            <section data-transition="none" data-background-transition="none">
+                <h3>Test script architecture</h3>
+                <div style="margin:0;padding:0;float:left;width:52%;">
+                    <pre style="box-shadow:none;margin:0;">
+                        <code  style="margin:0 -55px 0 0;max-height:600px;box-shadow:0px 0px 6px rgba(0, 0, 0, 0.3);">
+*** Settings ***
+Library    OperatingSystem
+
+*** Variables ***
+${PATH_TO_CHECK}    c:\\temp
+
+*** Test Cases ***
+Check Host Configuration
+    [Documentation]    Check config...
+    # Check existence of c:\temp folder
+    Should Exists    ${PATH_TO_CHECK}
+    Check Host Date Is    2015
+
+*** Keywords ***
+Check Host Date Is
+    [Documentation]    Check date...
+    [Arguments]    ${YEAR}
+    ${host_year}=    Get Time    year
+    Should Be Equal    ${host_year}    ${YEAR}
+                        </code>
+                    </pre>
+                </div>
+                <div style="margin:0;padding:0 ;float:right;width:46%;font-size:0.7em;">
+                    <h3>*** test cases ***</h3>
+                    <p style="padding:0;text-align:left;">
+                        List of test cases with each test steps inside. Settings of a test cases are :
+                        <ul style="margin:0;text-align:left;list-style-type:none;">
+                            <li><span style="font-weight:bold;color:#26c6da">[Documentation]</span> Used for specifying the test documentation</li>
+                            <li><span style="font-weight:bold;color:#26c6da">[Tags]</span> Used tagging test cases</li>
+                            <li><span style="font-weight:bold;color:#26c6da">[Setup]</span>, <span style="font-weight:bold;color:#26c6da">[Teardown]</span> Specify test setup (executed before the test) and teardown (executed after the test, even if test failed)</li>
+                            <li><span style="font-weight:bold;color:#26c6da">[Template]</span> Specify the template keyword to use for each step</li>
+                            <li><span style="font-weight:bold;color:#26c6da">[Timeout]</span> Set the test case execution timeout (Test fails if timeout is reached)</li>
+                        </ul>
+                    </p>
+                </div>
+
+                <div style="position:relative; top:195px; left: 3px; width:523px; height:160px; border:3px solid red;">&nbsp;</div>
+            </section>
+
+            <section data-transition="none" data-background-transition="none">
+                <h3>Test script architecture</h3>
+                <div style="margin:0;padding:0;float:left;width:52%;">
+                    <pre style="box-shadow:none;margin:0;">
+                        <code  style="margin:0 -55px 0 0;max-height:600px;box-shadow:0px 0px 6px rgba(0, 0, 0, 0.3);">
+*** Settings ***
+Library    OperatingSystem
+
+*** Variables ***
+${PATH_TO_CHECK}    c:\\temp
+
+*** Test Cases ***
+Check Host Configuration
+    [Documentation]    Check config...
+    # Check existence of c:\temp folder
+    Should Exists    ${PATH_TO_CHECK}
+    Check Host Date Is    2015
+
+*** Keywords ***
+Check Host Date Is
+    [Documentation]    Check date...
+    [Arguments]    ${YEAR}
+    ${host_year}=    Get Time    year
+    Should Be Equal    ${host_year}    ${YEAR}
+                        </code>
+                    </pre>
+                </div>
+                <div style="margin:0;padding:0 ;float:right;width:46%;font-size:0.7em;">
+                    <h3>*** keywords ***</h3>
+                    <p style="padding:0;text-align:left;">
+                        Contains keywords commons to your test suite. Keywords declared here can be used anywhere in the suite, even in setup and teardown calls. Keywords settings are:
+                    <ul style="margin:0;text-align:left;list-style-type:none;">
+                        <li><span style="font-weight:bold;color:#26c6da">[Documentation]</span> Used for specifying the keyword documentation</li>
+                        <li><span style="font-weight:bold;color:#26c6da">[Arguments]</span> Specify the keyword arguments</li>
+                        <li><span style="font-weight:bold;color:#26c6da">[Return]</span> Specify the keyword return value</li>
+                        <li><span style="font-weight:bold;color:#26c6da">[Timeout]</span> Set the keyword execution timeout (Test fails if timeout is reached)</li>
+                    </ul>
+                    </p>
+                </div>
+
+                <div style="position:relative; top:375px; left: 3px; width:523px; height:160px; border:3px solid red;">&nbsp;</div>
+            </section>
+
+            <section data-transition="none" data-background-transition="none">
+                <h3>Test script architecture</h3>
+                <div style="margin:0;padding:0;float:left;width:52%;">
+                    <pre style="box-shadow:none;margin:0;">
+                        <code  style="margin:0 -55px 0 0;max-height:600px;box-shadow:0px 0px 6px rgba(0, 0, 0, 0.3);">
+*** Settings ***
+Library    OperatingSystem
+
+*** Variables ***
+${PATH_TO_CHECK}    c:\\temp
+
+*** Test Cases ***
+Check Host Configuration
+    [Documentation]    Check config...
+    # Check existence of c:\temp folder
+    Should Exists    ${PATH_TO_CHECK}
+    Check Host Date Is    2015
+
+*** Keywords ***
+Check Host Date Is
+    [Documentation]    Check date...
+    [Arguments]    ${YEAR}
+    ${host_year}=    Get Time    year
+    Should Be Equal    ${host_year}    ${YEAR}
+                        </code>
+                    </pre>
+                </div>
+                <div style="margin:0;padding:0 ;float:right;width:46%;font-size:0.7em;">
+                    <h3>*** variables ***</h3>
+                    <p style="padding:0;text-align:left;">
+                        Define variables at a "tests suite scope". Variables declared here are accessible from every test cases, keywords or settings
+                    </p>
+                </div>
+
+                <div style="position:relative; top:120px; left: 3px; width:523px; height:60px; border:3px solid red;">&nbsp;</div>
+            </section>
+
+            <section data-transition="none" data-background-transition="none">
+                <h3>Test script architecture</h3>
+                <div style="margin:0;padding:0;float:left;width:52%;">
+                    <pre style="box-shadow:none;margin:0;">
+                        <code  style="margin:0 -55px 0 0;max-height:600px;box-shadow:0px 0px 6px rgba(0, 0, 0, 0.3);">
+*** Settings ***
+Library    OperatingSystem
+
+*** Variables ***
+${PATH_TO_CHECK}    c:\\temp
+
+*** Test Cases ***
+Check Host Configuration
+    [Documentation]    Check config...
+    # Check existence of c:\temp folder
+    Should Exists    ${PATH_TO_CHECK}
+    Check Host Date Is    2015
+
+*** Keywords ***
+Check Host Date Is
+    [Documentation]    Check date...
+    [Arguments]    ${YEAR}
+    ${host_year}=    Get Time    year
+    Should Be Equal    ${host_year}    ${YEAR}
+                        </code>
+                    </pre>
+                </div>
+                <div style="margin:0;padding:0 ;float:right;width:46%;font-size:0.7em;">
+                    <h3>*** settings ***</h3>
+                    <p style="padding:0;text-align:left;">
+                        <ul style="margin:0 0 0 -80px;text-align:left;list-style-type:none;">
+                            <li><span style="font-weight:bold;color:#26c6da">Import libraries</span><br><pre><code class="markdown" data-trim style="font-size:1.2em;margin-right:-55px;">Library    libraryName    arg1    arg2...</code></pre></li>
+                            <li><span style="font-weight:bold;color:#26c6da">Import External Keyword resources</span><br><pre><code class="markdown" data-trim style="font-size:1.2em;margin-right:-55px;">Resource    ../../keywords/myKWords.robot</code></pre></li>
+                            <li><span style="font-weight:bold;color:#26c6da">Setup and Teardown</span><br>
+                                <pre><code class="markdown" data-trim style="font-size:1.2em;margin-right:-55px;">
+Suite Setup    My Suite Setup Keyword
+Suite Teardown    My Suite Setup Keyword
+Test Setup    My Test Setup Keyword
+Test Teardown    My Test Setup Keyword
+                                </code></pre>
+                            </li>
+                            <li><span style="font-weight:bold;color:#26c6da">Tags</span><br>
+                                <pre><code class="markdown" data-trim style="font-size:1.2em;margin-right:-55px;">
+Force Tags    TAG1    TAG2
+Default tags    TAG
+                                </code></pre>
+                            </li>
+
+                        </ul>
+                    </p>
+                </div>
+
+                <div style="position:relative; top:45px; left: 3px; width:523px; height:60px; border:3px solid red;">&nbsp;</div>
+            </section>
+
+            <section>
+                <h3>Resource files</h3>
+                <div style="margin:0;padding:0;float:left;width:100%;">
+                    <pre style="box-shadow:none;margin:0;">
+                        <code  style="margin:0 -55px 0 0;max-height:600px;box-shadow:0px 0px 6px rgba(0, 0, 0, 0.3);">
+*** Settings ***
+Library    OperatingSystem
+
+*** Variables ***
+${EXPECTED_YEAR}    2015
+
+*** Keywords ***
+Check Host Date Is
+    [Documentation]    Check date...
+    ${host_year}=    Get Time    year
+    Should Be Equal    ${host_year}    ${EXPECTED_YEAR}
+                        </code>
+                    </pre>
+                </div>
+                <p>No <span style="font-style: italic;">*** Test Cases ***</span> section in resource files !</p>
+            </section>
+
+            <section>
+                <h3>Initialization files</h3>
+                <p><span style="font-style: italic;">__init__.ext</span></p>
+                <div style="margin:0;padding:0;float:left;width:40%;">
+                    <pre style="box-shadow:none;margin:0;">
+                        <code data-trim style="margin:0 -55px 0 0;max-height:600px;box-shadow:0px 0px 6px rgba(0, 0, 0, 0.3);">
+*** Settings ***
+Suite setup    Do Something
+Library        SeleniumLibrary
+Resource       ../keywords/myKw.robot
+
+*** Variables ***
+${MY_VAR}    foo
+
+*** Keywords ***
+Do Something
+    Log    ${MY_VAR}
+                        </code>
+                    </pre>
+                </div>
+                <div style="margin:0;padding:0;float:right;width:53%;">
+                <p>
+                    <ul style="margin:0;text-align:left;font-size:0.9em;">
+                        <li>This file is executed before each other test suites of the current folder</li>
+                        <li>Resource imported in this file are also available for all the test suites in the same folder</li>
+                        <li>Libraries, Variables, Keywords are <span style="font-weight:bold; color:red;">NOT</span> available for suites in the same folder</li>
+                    </ul>
+
+                </p>
+                </div>
+            </section>
+
+            <section>
+                <h3>RobotFramework Editor : RIDE</h3>
+                <p>RIDE (RobotFramework Integrated Development Editor) is a light-weight and intuitive editor for Robot Framework test case files written in Python.</p>
+                <div style="margin:0;padding:0;float:left;width:40%;">
+                    <iframe width="420" height="315" src="//www.youtube.com/embed/6F_xGKdoN1E" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div style="margin:0;padding:0;float:right;width:53%;">
+                <p>
+                    <ul style="margin:0;text-align:left;font-size:0.9em;">
+                        <li>Download RIDE <a href="https://pypi.python.org/pypi/robotframework-ride">here</a></li>
+                        <li>More information on github <a href="https://github.com/robotframework/RIDE">here</a></li>
+                    </ul>
+                </p>
+                </div>
+            </section>
+
+        </section>
+
+        <section data-transition="linear" data-background="#262626" data-background-transition="slide">
+            <section>
+                <h2>RobotFramework libraries</h2>
+            </section>
+            <section>
+
+                <table>
+                    <tr>
+                        <th><font color="#fa0">Official Libraries</font></th>
+                        <th><font color="#fa0">External Libraries</font></th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table style="font-size:0.8em;">
+                                <tr><td>Built In</td><td>All RobotFramework basic keywords</td></tr>
+                                <tr><td>Operating System</td><td>Enables various O.S. related tasks (Files, Run commands…)</td></tr>
+                                <tr><td>Collections</td><td>Keywords for handling lists and dictionaries</td></tr>
+                                <tr><td>Strings</td><td>String manipulation and verification</td></tr>
+                                <tr><td>...</td><td>etc</td></tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table style="font-size:0.8em;">
+                                <tr><td>Selenium</td><td>For web application testing</td></tr>
+                                <tr><td>SSHLibrary</td><td>Connect and run commands on SSH remote server</td></tr>
+                                <tr><td>DbLibrary</td><td>Common fonctionnality for testing database content</td></tr>
+                                <tr><td>...</td><td>etc</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </section>
+
+            <section>
+                <div style="font-size:1.4em;"><font color="#fa0">Exercise 1</font>&nbsp;&nbsp;&nbsp;Automation with database library</div>
+
+                    <div class="fragment" style="width:90%">
+                        <span style="text-align:right;float:left;width:78%;margin-top:50px">Write a keyword that connect to the database and run an init sql script</span>
+                        <img src="img/database.png" style="float:right;background:transparent; box-shadow:none; border:none;width:20%;"/>
+                    </div>
+                    <div class="fragment" style="margin-top:20px;">
+                        <div style="text-align:left;font-size:1em">
+                            <ul>
+                                <li>Launch the H2 database exercises\ex1\tools\h2\start_server.bat</li>
+                                <li>
+                                    In a RobotFramework test case
+                                    <ul>
+                                        <li>Import the library named <code>org.robot.database.keywords.DatabaseLibrary</code></li>
+                                        <li>Connect to the h2 database with the good driver</li>
+                                        <li>Run the file exercises\ex1\init_data.sql</li>
+                                        <li>Verify the number of row in table "TEST_TABLE" is 3</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <strong>Use the <a href="#">documentation</a> !!!</strong>
+                    </div>
+            </section>
+
+            <section>
+                <div style="font-size:1.4em;"><font color="#fa0">Selenium</font>&nbsp;&nbsp;&nbsp;A web app test automation framework</div>
+
+                <div class="fragment" style="width:90%">
+                    <span style="text-align:right;float:left;width:78%;margin-top:50px">Write a test case that connect to Wikipedia and search for RobotFramework page</span>
+                    <img src="img/browser.png" style="float:right;background:transparent; box-shadow:none; border:none;width:20%;"/>
+                </div>
+                <div class="fragment" style="margin-top:20px;">
+                    <div style="text-align:left;font-size:1em">
+                        <ul>
+                            <li>Import the library named <code>Selenium2Library</code></li>
+                            <li>Open a firefox browser to http://en.wikipedia.org/</li>
+                            <li>In the search bar write "Robot Framework" and click on search button</li>
+                            <li>Verify the displayed page contains the text "<i>Robot Framework is a generic test automation framework</i>"</li>
+                        </ul>
+                    </div>
+                    <strong>Use the <a href="#">documentation</a> !!!</strong>
+                </div>
+            </section>
+
+            <section data-transition="none">
+                <div style="font-size:1.4em;"><font color="#fa0">Selenium</font>&nbsp;&nbsp;&nbsp;Locating elements</div>
+
+                <div class="fragment" style="width:100%;margin-top:37px;">
+                    <span>
+                        All keywords in Selenium2Library that need to find an element on the page take a <strong style="font-size:1.1em;color:#fa0">locator</strong> argument.
+                        <span >A locator is an attribute of the html tag we want to work with.</span>
+                        <br><br><br><br><br><br>
+                    </span>
+                </div>
+            </section>
+
+            <section data-transition="none">
+                <div style="font-size:1.4em;"><font color="#fa0">Selenium</font>&nbsp;&nbsp;&nbsp;Locating elements</div>
+
+                <div style="width:100%;margin-top:50px;">
+
+                    <div style="float:left;width:55%">
+                        For example if we want to locate this element in a web page<br>
+                    </div>
+                    <pre><code style="margin-top:30px;font-size:1.17em;float:right;width:40%;">&lt;input id=&quot;searchInput&quot;&gt;</code></pre>
+                    <div style="clear:both;padding:35px 0 25px 0;">Then the locator is <code ><font color="#fa0">id=searchInput</font></code><br></div>
+                    <span class="fragment">
+                        <span style="float:left;width:37%;font-size:1em;margin-top:25px;">So in Robot Framework code we can write</span>
+                        <pre style="margin:0;padding:0;float:right;width:62%;box-shadow:none;">
+                            <code style="font-size:1.1em;margin:0;">Wikipedia Search
+    Open Browser   http://en.wikipedia.org
+    Input text    id=searchInput    Robot Framework</code>
+                        </pre>
+                        <div style="position:relative; top:78px; left: 635px; width:205px; height:25px; border:3px solid red;">&nbsp;</div>
+                    </span>
+                </div>
+
+            </section>
+
+            <section data-transition="none">
+                <div style="font-size:1.4em;"><font color="#fa0">Selenium</font>&nbsp;&nbsp;&nbsp;Locating elements with XPath</div>
+
+
+                <div style="margin-top:40px;">
+                    <font color="#fa0">XPath</font> (XML Path language) is a query language  for selecting node in an XML document
+                    <br><br>
+                    <span style="text-align=left;">Syntax in Robot Framework script</span>
+                    <center>
+                        <pre style="margin:0;padding:0; box-shadow:none;width:80%">
+                            <code style="font-size:1.1em;margin:0;">Input text    xpath=&quot;xpath value&quot;    Robot Framework</code>
+                        </pre>
+                    </center>
+                </div>
+
+            </section>
+
+            <section data-transition="none">
+                <div style="font-size:1.4em;"><font color="#fa0">Selenium</font>&nbsp;&nbsp;&nbsp;Locating elements with XPath</div>
+
+                <div style="margin-top:40px;">
+                    <pre style="margin:0;padding:0;float:left;width:55%;box-shadow:none;">
+                        <code style="font-size:1.1em;margin:0;">
+&lt;html&gt;
+    &lt;title&gt;My Page&lt;/title&gt;
+    &lt;body&gt;
+        &lt;span id=&quot;welcome-msg&quot;&gt;
+            Hello World
+        &lt;/span&gt;
+        &lt;div name=&quot;form1&quot;&gt;
+            &lt;input id=&quot;searchInput&quot;&gt;
+            &lt;input type=&quot;button&quot;
+                   value=&quot;Valider&quot;&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                    <div style="margin:0;padding:5px 0 0 0;float:right;width:43%;font-size:1.1em">
+                        <pre class="fragment" style="border-left:4px solid red;"><code>/</code><div style="position:absolute; top:30px; left:-607px; width:5px; height:323px; border:3px solid red;border-right:none;">&nbsp;</div></pre>
+                        <pre class="fragment" style="border-left:4px solid orange;"><code>/html/body/span</code><div style="position:absolute; top:52px; left:-499px; width:5px; height:65px; border:3px solid orange;border-right:none;">&nbsp;</div></pre>
+                        <pre class="fragment" style="border-left:4px solid orange;"><code>//span</code></pre>
+                        <pre class="fragment" style="border-left:4px solid white;"><code>//input</code><div style="position:absolute; top:35px; left:-450px; width:5px; height:60px; border:3px solid white;border-right:none;">&nbsp;</div></pre>
+                        <pre class="fragment" style="border-left:4px solid aquamarine;"><code>//input[@id='searchInput']</code><div style="position:absolute; top:-23px; left:-440px; width:5px; height:20px; border:3px solid aquamarine;border-right:none;">&nbsp;</div></pre>
+                        <pre class="fragment" style="border-left:4px solid orange;"><code>//*[text()='Hello World']</code></pre>
+                        <pre class="fragment" style="border-left:4px solid orange;"><code>//*[contains(text(),'Hello']</code></pre>
+                    </div>
+                </div>
+
+            </section>
+
+            <section data-transition="none">
+                <div style="font-size:1.4em;"><font color="#fa0">Exercice 2 : </font>&nbsp;&nbsp;&nbsp;Try it yourlself !</div>
+                Open the file <a href="exercices/ex2/example.html">example.html</a> with firefox and tests the previous XPath with Firepath extension
+
+                <img src="img/ex3_screenshot.png">
+            </section>
+
+            <section data-transition="none">
+                <div style="font-size:1.4em;"><font color="#fa0">Exercice 3 : </font>&nbsp;&nbsp;&nbsp;Locate element with XPath</div>
+                <div style="font-size:0.9em;text-align:left;">
+                    Open the file <a href="exercices/ex3/fake-data.html">fake-data.html</a> with firefox and locate the following element with XPath :
+                    <br>
+                    <ul>
+                        <li style="line-height:70px;">The input field 1 by using its id <img style="margin:0;" src="img/ex4/field1.png"></li>
+                        <li style="line-height:70px;">The label "field 3" by using its content text <img style="margin:0;" src="img/ex4/field3-label.png"></li>
+                        <li style="line-height:70px;">The input field 3 by using its label on the side <img style="margin:0;" src="img/ex4/field3-input.png"></li>
+                        <li style="line-height:70px;">The email "jhunter5@gnu.org" (using text)<img style="margin:0;" src="img/ex4/email.png"></li>
+                        <li style="line-height:70px;">The IP Address of "Juan King" by using its email text<img style="margin:0;" src="img/ex4/ip.png"></li>
+                    </ul>
+
+                </div>
+
+            </section>
+
+            <section data-transition="none">
+                <div style="font-size:1.4em;"><font color="#fa0">Exercice 4 : </font>&nbsp;&nbsp;&nbsp;XPath in RobotFramework script</div>
+
+                <div class="fragment" style="width:90%">
+                    <span style="text-align:right;float:left;width:78%;margin-top:50px">Write a test case that open to Wikipedia page of New York city, and write keyword returning the population for a given decade</span>
+                    <img src="img/wikipedia.png" style="float:right;background:transparent; box-shadow:none; border:none;width:20%;"/>
+                </div>
+                <div class="fragment" style="margin-top:20px;">
+                    <div style="text-align:left;font-size:0.9em">
+                        The final test case should look like :
+                        <pre style="margin:0;padding:0;float:left;width:100%;box-shadow:none;">
+                            <code style="font-size:1.1em;margin:0;">
+Check NY Population
+    Open Browser    https://en.wikipedia.org/wiki/New_York
+    ${population1910}=    Get NY Population    1910
+    Should Be Equals    ${population1910}    9,113,614
+                            </code>
+                        </pre>
+
+                        <br>
+                        You must write the keyword Get NY Population !
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section data-transition="linear" data-background="#EDEDED" data-background-transition="slide">
+            <section>
+                <h2>Extend RobotFramework</h2>
+            </section>
+
+            <section>
+                <div style="font-size:1.4em;">Extend RbF with <font color="#F9B248">Java</font></div>
+
+
+                <div class="fragment" style="width:100%">
+                    Your projet will need the <a href="https://github.com/robotframework/JavalibCore">RobotFramework Java Lib Core</a>
+                    <pre  style="margin:0;padding:0;float:left;width:100%;box-shadow:none;">
+                        <code style="font-size:1.1em;margin:0;">
+@RobotKeywords
+public class FTPLibrary {
+
+    public FTPLibrary(){}
+
+    @RobotKeyword(
+        "Put a file via ftp\n" +
+        "Example :\n" +
+        "| Ftp Put | 192.168.1.1 | user | passwd | C:\\myFile.txt | /home/user/dir |")
+    @ArgumentNames({"host","user","passwd","filePath","targetDirectory"})
+    public void ftpPut(String host, String user, String passwd, String filePath, String targetDirectory)
+       // Your Java code
+    }
+}                        </code>
+                    </pre>
+                    For more information, check the Java lib core <a href="https://github.com/robotframework/JavalibCore/wiki">documentation</a>
+                </div>
+            </section>
+
+        </section>
+        <section data-transition="linear" data-background="#FFF" data-background-transition="slide">
+            <section>
+                <h2>Conclusion</h2>
+            </section>
+
+            <section>
+                <div style="font-size:1.5em;">Any question <font color="#F9B248">?</font></div>
+            </section>
+
+        </section>
+
+    </div>
+</div>
+
+<script src="reveal.js-3.1.0/lib/js/head.min.js"></script>
+<script src="reveal.js-3.1.0/js/reveal.js"></script>
+
+<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // width: 1280, //(Mini 1024 pour pres robotFmk)
+                // height: 1024, //(Mini 760 pour pres robotFmk)
+                width: 1024, //(Mini 1024 pour pres robotFmk)
+                height: 760, //(Mini 760 pour pres robotFmk)
+
+                // Factor of the display size that should remain empty around the content
+                margin: 0.1,
+
+                // Bounds for smallest/largest possible scale to apply to content
+                minScale: 0.2,
+                maxScale: 1.0,
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'reveal.js-3.1.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'reveal.js-3.1.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal.js-3.1.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal.js-3.1.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'reveal.js-3.1.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'reveal.js-3.1.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+
+</script>
+
+</body>
+</html>
